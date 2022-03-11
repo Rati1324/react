@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import TodoList from './TodoList'
+import { ToDoProvider } from './context/ToDoContext';
 import uuid from 'react-uuid'
-
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
 const App = () => {
@@ -17,12 +17,7 @@ const App = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
   }, [todos])
 
-  function toggleTodo (id) {
-    const newTodos = [...todos]
-    const todo = newTodos.find(todo => todo.id === id)
-    todo.complete = !todo.complete
-    setTodos(newTodos)
-  }
+  
 
   function handleAddTodo (e) {
     const name = todoNameRef.current.value
@@ -34,19 +29,28 @@ const App = () => {
     todoNameRef.current.value = null
   }
 
+  function toggleTodo (id) {
+        const newTodos = [...todos]
+        const todo = newTodos.find(todo => todo.id === id)
+        todo.complete = !todo.complete
+        setTodos(newTodos)
+  }
+
   function handleClearTodo () {
     const newTodos = todos.filter(todo => !todo.complete)
     setTodos(newTodos)
   }
-  
   return (
     <>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <ToDoProvider>
+        <TodoList handle={handleClearTodo}/>
+      </ToDoProvider>
+      {/* <TodoList todos={todos} toggleTodo={toggleTodo} />
       <br/>
       <input ref={todoNameRef} type="text"></input>
       <button onClick={handleAddTodo}>Add Todo</button>
       <button onClick={handleClearTodo}>Clear Completed Todos</button>
-      <div>{todos.filter(todo => !todo.complete).length} left to do</div>
+      <div>{todos.filter(todo => !todo.complete).length} left to do</div> */}
     </>
   );
 }
