@@ -1,0 +1,5 @@
+$grey: grey;
+
+@mixin container_color($bgColor:$bgColor) {
+    background-color: $bgColor;
+}
