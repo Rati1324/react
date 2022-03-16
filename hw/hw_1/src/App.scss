@@ -42,6 +42,7 @@
 .container {
   @include container_color($grey);
   padding: 10px;
+  max-width: 400px;
 }
 
 button {

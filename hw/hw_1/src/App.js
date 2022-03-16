@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import Container from './components/Container';
+import Container from './components/1/Container';
+import Container_2 from './components/2/Container_2';
+import Result from './components/2/Result';
+import DayProvider from './context/DayContext';
 import './App.scss';
 
 function App() {
-  const [day, setDay] = useState("monday")
-
-  const buttonData = [
-    { num: 1, name: "monday" }, { num: 2, name: "tuesday" }, { num: 3, name: "wednesday" }, 
-    { num: 4, name: "thursday" }, { num: 5, name: "friday" }, { num: 6, name: "saturday" },
-    { num: 7, name: "sunday" }
-  ]
-
   return (
-    <Container curDay={day} buttonData={buttonData} handleClick={setDay}/>
+    <>
+      <DayProvider>
+        <Container />
+      </DayProvider>
+      <br/>
+      <Container_2 />
+    </>
   );
 }
 
