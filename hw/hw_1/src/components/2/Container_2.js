@@ -1,8 +1,7 @@
 import React from 'react'
 import { useState, useRef} from "react";
-import Add from "./Add"
+import Button from "./Button"
 import Result from "./Result"
-import Subtract from "./Subtract"
 import Input from "./Input"
 
 export default function Container_2() {
@@ -13,8 +12,10 @@ export default function Container_2() {
     <>
         <Result curValue={result}/>
         <Input valueRef={valueRef} />
-        <Add handleClick={setResult} curValue={result} inputValue={valueRef} />
-        <Subtract handleClick={setResult} curValue={result} inputValue={valueRef}/>
+        
+        <Button handleClick={() => {setResult(result + parseInt(valueRef.current.value))}} btnName="Add"/>
+
+        <Button handleClick={() => {setResult(result - parseInt(valueRef.current.value))}} btnName="Subtract"/>
     </>
   )
 }
