@@ -1,7 +1,6 @@
 import './App.css';
 import Buttons from './components/Buttons';
 import Value from './components/Value';
-import Container from './components/Container';
 import { useState } from "react";
 import { useMouse } from "rooks";
 
