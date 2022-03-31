@@ -1,6 +1,7 @@
 import './App.css';
 import Buttons from './components/Buttons';
 import Value from './components/Value';
+import Cube from './components/Cube';
 import { useState } from "react";
 import { useMouse } from "rooks";
 
@@ -13,6 +14,7 @@ function App() {
       <Value value={value}/>
       <Buttons buttonData={data} onClick={setValue}/>
       <button onClick={() => setValue(data[Math.floor(Math.random() * data.length)]['business_name'])}>Random</button>
+      <Cube />
     </div>
   );
 }
