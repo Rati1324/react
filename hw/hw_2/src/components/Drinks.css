@@ -1,0 +1,16 @@
+.container {
+  border: 1px solid;
+}
+
+.drinkContainer {
+  border: 1px solid;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.content {
+  width: 40%;
+  margin: auto;
+}
