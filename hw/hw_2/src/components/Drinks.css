@@ -1,6 +1,8 @@
 .container {
-  border: 1px solid;
+  /* display: flex; */ 
+  /* flex-direction: row; */
 }
+
 
 .drinkContainer {
   border: 1px solid;
@@ -11,6 +13,6 @@ ul {
 }
 
 .content {
-  width: 40%;
   margin: auto;
+  width: 70%;
 }

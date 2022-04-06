@@ -4,20 +4,22 @@ const DrinkContext = createContext()
 
 const DrinkProvider = ({ children }) => {
   const [drinks, setDrinks] = useState([])
+  const [drinksCopy, setDrinksCopy] = useState([])
 
   async function fetchDrinks (url) {
     const response = await fetch(url)
     const data = await response.json()
     setDrinks(data.drinks)
+    setDrinksCopy(data.drinks)
   }
 
   useEffect(() => {
     fetchDrinks("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
+    // setDrinksCopy([2,3,4,5])
   }, [])
 
-  const value = { drinks, setDrinks }
   return (
-    <DrinkContext.Provider value={value}>
+    <DrinkContext.Provider value={{ drinks, setDrinks, drinksCopy, setDrinksCopy }}>
       {children}
     </DrinkContext.Provider>
   )
@@ -27,4 +29,4 @@ export const GlobalContext = () => {
   return useContext(DrinkContext)
 }
 
-export { DrinkContext, DrinkProvider }
+export { DrinkProvider } // DrinkContext not needed? 
