@@ -17,7 +17,7 @@ export default function Form() {
     }
 
     let a = drinks.slice()
-    a.unshift({idDrinks: id, strCategory: categoryRef.current.value, strInstructions: instructionsRef.current.value})
+    a.unshift({idDrink: id, strCategory: categoryRef.current.value, strInstructions: instructionsRef.current.value})
     setDrinks(a)
   }
 

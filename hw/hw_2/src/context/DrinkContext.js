@@ -15,7 +15,6 @@ const DrinkProvider = ({ children }) => {
 
   useEffect(() => {
     fetchDrinks("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
-    // setDrinksCopy([2,3,4,5])
   }, [])
 
   return (

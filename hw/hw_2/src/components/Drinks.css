@@ -1,13 +1,27 @@
-.container {
-  /* display: flex; */ 
-  /* flex-direction: row; */
+table {
+  width: 100%;
+  border-spacing: 0px;
 }
 
+table tr td {
+  border: 1px solid;
+}
+
+table tr{
+  padding: 0px;
+}
 
 .drinkContainer {
   border: 1px solid;
 }
 
+.col1{
+  width: 30%
+}
+
+.col2{
+  width: 70%;
+}
 ul {
   list-style-type: none;
 }
