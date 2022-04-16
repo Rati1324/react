@@ -1,28 +1,30 @@
 import React, { useEffect } from 'react'
-import {useState} from 'react'
 import { GlobalContext } from '../context/QuizContext'
+import { v4 as uuidv4 } from 'uuid';
 
-function Question(props) {
-  const { curQuestion, setCurQuestion } = GlobalContext()
-
-  useEffect(() => {
-    let r = Math.floor(Math.random() * props.questions[curQuestion].incorrect_answers.length)
-    props.questions[curQuestion].incorrect_answers.splice(r, 0, props.questions[curQuestion].correct_answer)
-  }, [curQuestion])
-
-  function handleClick() {
-    setCurQuestion(curQuestion + 1)
+export default function Question(props) {
+  const { curQuestion, setCurQuestion, quiz, setQuiz, score, setScore, fetchQuiz } = GlobalContext()
+  
+  function handleClick(e) {
+    if (curQuestion < quiz.length) {
+      setCurQuestion(curQuestion + 1)
+    }
+    if (quiz[curQuestion].correct_answer === e.target.value) {
+      setScore(score + 1)
+    }
   }
 
-  return (
-    <>
-      <div>{props.questions[curQuestion].question}</div>
-
-      {props.questions[curQuestion].incorrect_answers.map((el, i) => (
-        <button onClick={() => {handleClick()}} key={i}>{el}</button>
-      ))}
-    </>
-  )
+  if (quiz.length > 0 && curQuestion < quiz.length) {
+    return (
+      <div>
+        {quiz[curQuestion].correct_answer}
+        {quiz[curQuestion].incorrect_answers.map((el, i) => (
+          <button onClick={(e) => {handleClick(e)}} value={el} key={i}>{el}</button>
+        ))}
+      </div>
+    )
+  }
+  else if (quiz.length !== 0 && quiz.length === curQuestion) {
+    return (<div>You scored: {score}</div>)
+  }
 }
-
-export default Question
