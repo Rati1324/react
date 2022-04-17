@@ -5,8 +5,6 @@ const QuizContext = createContext()
 const QuizProvider = ({ children }) => {
   const [quiz, setQuiz] = useState([])
   const [curQuestion, setCurQuestion] = useState(0)
-  // const [num, setNum] = useState(0)
-  // const [category, setCategory] = useState(28)
   const [score, setScore] = useState(0)
 
   async function fetchQuiz(num, category) {

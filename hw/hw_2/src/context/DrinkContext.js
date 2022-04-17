@@ -18,7 +18,7 @@ const DrinkProvider = ({ children }) => {
   }, [])
 
   return (
-    <DrinkContext.Provider value={{ drinks, setDrinks, drinksCopy, setDrinksCopy }}>
+    <DrinkContext.Provider value={{ drinks, setDrinks, drinksCopy }}>
       {children}
     </DrinkContext.Provider>
   )
