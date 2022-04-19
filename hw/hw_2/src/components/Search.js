@@ -4,13 +4,10 @@ import { GlobalContext } from '../context/DrinkContext'
 
 export default function Search() {
   const inputRef = useRef()
-  const { setDrinks, drinksCopy } = GlobalContext()
+  const { fetchDrinks } = GlobalContext()
 
   function handleClick() {
-    var result = drinksCopy.filter(d => {
-      return d.strCategory == inputRef.current.value
-    })
-    setDrinks(result)
+    fetchDrinks(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputRef.current.value}`)
   }
 
   return (
