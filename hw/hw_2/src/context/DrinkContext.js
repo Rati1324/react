@@ -16,6 +16,7 @@ async function reducer(state, action) {
 const DrinkProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {drinks: []})
 
+
   async function fetchDrinks (url) {
     const response = await fetch(url)
     const data = await response.json()
