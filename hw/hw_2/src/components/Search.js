@@ -2,19 +2,16 @@ import React, { useEffect } from 'react'
 import { useRef } from 'react'
 import { GlobalContext } from '../context/DrinkContext'
 
-export default function Search() {
+export default function Search(props) {
   const inputRef = useRef()
-  const { fetchDrinks } = GlobalContext()
+  const { dispatch } = GlobalContext()
 
-  function handleClick() {
-    fetchDrinks(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputRef.current.value}`)
-  }
 
   return (
     <> 
-      Category: 
+      Name: 
       <input ref={inputRef} type="text"/>
-      <button onClick={() => handleClick()}>Search</button>
+      <button onClick={() => dispatch({type: "search", query: inputRef.current.value })}>Search</button>
     </>
   )
 }

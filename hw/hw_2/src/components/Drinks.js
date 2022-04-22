@@ -1,41 +1,36 @@
-import { React, useEffect } from 'react'
+import { React } from 'react'
 import { GlobalContext } from '../context/DrinkContext'
 import "./Drinks.css"
 import Button from './Button'
 import Search from './Search'
 
 export default function Drinks() {
-  const { state } = GlobalContext()
-
-  useEffect(() => {
-    console.log(state && state)
-  }, [state])
-
-  if (state.drinks === 0) {
-    return <div>aosijdoa</div>
-  }
+  const { state, dispatch } = GlobalContext()
 
   return (
     <>
-      {/* <Button name={"Delete all"} handleClick={removeAll}/> */}
+      <Button name={"Delete all"} handleClick={() => {dispatch({type: "removeAll"})}}/>
       <div className="container"> 
-        {/* {state.map((el, i) => (
-            <div key={i}>{el}</div>
-          ))
-        }) */}
-          {/* <Search drinksCopy={drinksCopy}/> */}
-            {/* <table>
-            <thead>
-              <tr>
-                <td className="col1">Category</td>
-                <td className="col2">name</td>
-                <td></td>
-              </tr>
-            </thead>
-            <tbody>
-              
-            </tbody>
-          </table> */}
+        <Search />
+          <table>
+          <thead>
+            <tr>
+              <td className="col1">Category</td>
+              <td className="col2">name</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            {state.drinks.map((el, i) => (
+              <tr key={el.idDrink}>
+                <td> {el.strCategory}</td>
+                <td>{el.strDrink}</td>
+                <td><Button name={"Delete"} handleClick={() => dispatch({type: "removeOne", idDrink: el.idDrink})}/></td>
+              </tr> 
+              ))
+            }    
+          </tbody>
+        </table>
       </div>
     </>
   )
