@@ -4,7 +4,7 @@ import { GlobalContext } from '../context/QuizContext'
 import Question from './Question'
 
 export default function Quiz() {
-  const { quiz, fetchQuiz } = GlobalContext()
+  const { quiz, fetchQuiz, curQuestion } = GlobalContext()
   const [status, setStatus] = useState("Start")
   const numInput = useRef()
   const catInput = useRef()
@@ -19,7 +19,11 @@ export default function Quiz() {
         <option value="9">General Knowledge</option>
         <option value="11">Entertainment: Film</option>
       </select>
-      <Question questions={quiz} setStatus={setStatus}/> 
+
+      {(quiz.length > 0) ?
+        <Question questions={quiz} setStatus={setStatus}/> 
+        : <div></div>
+      }
     </>
   )
 }

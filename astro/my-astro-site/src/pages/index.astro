@@ -1,0 +1,24 @@
+---
+import Button from "../components/Button.jsx";
+import '../styles/global.css';
+import '../styles/home.css';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'My Astro Site';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>{title}</title>
+	</head>
+	<body>
+		<main>
+			<Button client:load/>
+		</main>
+	</body>
+</html>

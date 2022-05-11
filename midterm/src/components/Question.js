@@ -15,20 +15,20 @@ export default function Question(props) {
 
   useEffect(() => {
     if (quiz.length > 0) {props.setStatus("Restart")}
+    console.log(curQuestion, quiz.length)
   })
 
-  if (quiz.length > 0 && curQuestion < quiz.length) {
-    return (
-      <div>
-        {quiz[curQuestion].question}
-        <br/>
-        {quiz[curQuestion].incorrect_answers.map((el, i) => (
-          <button onClick={(e) => {handleClick(e)}} value={el} key={i}>{el}</button>
-        ))}
-      </div>
-    )
-  }
-  else if (quiz.length !== 0 && quiz.length === curQuestion) {
+  if (quiz.length !== 0 && quiz.length === curQuestion) {
     return (<div>You scored: {score}</div>)
   }
+
+  return (
+    <div>
+      {quiz[curQuestion].question}
+      <br/>
+      {quiz[curQuestion].incorrect_answers.map((el, i) => (
+        <button onClick={(e) => {handleClick(e)}} value={el} key={i}>{el}</button>
+      ))}
+    </div>
+  )
 }

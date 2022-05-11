@@ -1,23 +1,35 @@
-import { createContext } from "react";
-export const ToDoContext = createContext();
+import { createContext, useContext, React, useReducer } from "react";
+import { todoReducer, ADD_TODO, DELETE_TODO, TOGGLE_TODO } from "./todoReducer";
 
-export const ToDoProvider = ({ children }) => {
-    const ToDos = [
-        {
-            key: 1, 
-            todo: "asd",
-            complete: false,
-        }
-    ]
+const todoContext = createContext();
 
-    const log = () => {
-        console.log("from prov")
-    }
+const TodoProvider = ({ children }) => {
+  const initialState = {
+    todos: []
+  }
 
-    const values = {ToDos}
-    return (
-        <ToDoContext.Provider value={values} >
-            {children}
-        </ToDoContext.Provider>
-    )
+  function addTodo (todo) {
+    console.log(todo)
+    dispatch({type: ADD_TODO, payload: todo})
+  }
+
+  function toggleTodo (todoId) {
+    dispatch({type: TOGGLE_TODO, payload: todoId})
+  }
+
+  function deleteTodo(todoId) {
+    console.log(todoId)
+    dispatch({type: DELETE_TODO, payload: todoId})
+  }
+
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+  return(
+    <todoContext.Provider value={{todos: state.todos, addTodo, toggleTodo, deleteTodo}}> {children} </todoContext.Provider>
+  )
 }
+
+export function GlobalContext() {
+  return useContext(todoContext)
+}
+
+export { TodoProvider }
