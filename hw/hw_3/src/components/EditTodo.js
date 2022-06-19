@@ -11,6 +11,7 @@ export default function EditTodo(props) {
     dispatch(editTodo({id: props.todoId, title: input}));
     props.setToggleEdit(false);
   }
+
   return (
     <div>
       <input type="text" onChange={(e) => setInput(e.target.value)} />

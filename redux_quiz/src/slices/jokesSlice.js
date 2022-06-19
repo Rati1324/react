@@ -40,10 +40,7 @@ export const jokesSlice = createSlice( {
       state.loading = false;
       state.value = [action.payload]
     },
-    [getJokes.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.value = action.payload;
-    }
+
   }
 })
 

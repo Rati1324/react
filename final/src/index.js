@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "./slices/todoSlice";
 import { Provider } from "react-redux";
+import productReducer from "./slices/productsSlice";
 
 const store = configureStore({
-  reducer: {
-    todo: todoReducer
-  }
+  reducer: { products: productReducer}
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
